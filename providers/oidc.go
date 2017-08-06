@@ -28,6 +28,7 @@ func (p *OIDCProvider) Redeem(redirectURL, code string) (s *SessionState, err er
 		Endpoint: oauth2.Endpoint{
 			TokenURL: p.RedeemURL.String(),
 		},
+		RedirectURL: redirectURL,
 	}
 	token, err := c.Exchange(ctx, code)
 	if err != nil {
